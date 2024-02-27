@@ -14,10 +14,10 @@ function addTarefa(){
 
 
         let novoItem  = `<div id="${contador}" class="item">
-        <div  class="item-icone">
+        <div onclick="marcarTarefa(${contador})"  class="item-icone">
             <i class="mdi mdi-circle-outline"></i>
         </div>
-        <div class="item-nome">
+        <div onclick="marcarTarefa(${contador})" class="item-nome">
             ${valorInput}
         </div>
         <div class="item-botao">
@@ -44,6 +44,26 @@ function deletar(id){
     tarefa.remove();
 }
 
+function marcarTarefa(id){
+    var item = document.getElementById(id);
+    var classe = item.getAttribute('class');
+
+    if(classe ==="item"){
+        item.classList.add(clicado);
+    }
+}
+
+
+
+input.addEventListener("keyup", function(event){
+    //SE TECLOU ENTER (13)
+    if(event.keyCode === 13){
+        event.preventDefault();
+        btnAdd.click();
+    }
+
+
+})
 
 
 
