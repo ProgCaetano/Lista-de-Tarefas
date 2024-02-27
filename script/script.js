@@ -15,7 +15,7 @@ function addTarefa(){
 
         let novoItem  = `<div id="${contador}" class="item">
         <div onclick="marcarTarefa(${contador})"  class="item-icone">
-            <i class="mdi mdi-circle-outline"></i>
+            <i id"icone_${contador}" class="mdi mdi-circle-outline"></i>
         </div>
         <div onclick="marcarTarefa(${contador})" class="item-nome">
             ${valorInput}
@@ -49,7 +49,20 @@ function marcarTarefa(id){
     var classe = item.getAttribute('class');
 
     if(classe ==="item"){
-        item.classList.add(clicado);
+        item.classList.add('clicado');
+
+        var icone = document.getElementById('icone_' + id);
+        icone.classList.remove('mdi-circle-outline');
+        icone.classList.add('mdi-check-circle');
+
+        item.parentNote.appendChild(item);
+
+    } else {
+        item.classList.add('clicado');
+
+        var icone = document.getElementById('icone_' + id);
+        icone.classList.remove('mdi-check-circle');
+        icone.classList.add('mdi-circle-outline');
     }
 }
 
